@@ -12,7 +12,7 @@ public class CrazyLogger {
         this.name = name;
     }
 
-    private String getCurrentDate(){
+    private String getFormatCurrentDate(){
         Date dateNow = new Date();
         SimpleDateFormat formatForDateNow =
                 new SimpleDateFormat("dd.mm.YYYY : hh:mm - ");
@@ -20,8 +20,8 @@ public class CrazyLogger {
     }
 
 
-    public void stackTraceToString(Throwable exception) {
-        exceptionMessages.append(getCurrentDate());
+    public void stackTraceLog(Throwable exception) {
+        exceptionMessages.append(getFormatCurrentDate());
         for (StackTraceElement element : exception.getStackTrace()) {
             exceptionMessages.append(element.toString());
             exceptionMessages.append("\n");
@@ -29,7 +29,7 @@ public class CrazyLogger {
 
     }
 
-    public boolean find (String message){
+    public boolean findExceptionMessage (String message){
         return toString().contains(message);
     }
 

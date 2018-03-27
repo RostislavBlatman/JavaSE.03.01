@@ -5,15 +5,15 @@ public class Main {
         CrazyLogger cl = new CrazyLogger("example");
     try{
         int example = 1/0;
-    }catch (Exception e){
-            cl.stackTraceToString(e);
+    }catch (Exception exception){
+            cl.stackTraceLog(exception);
             System.out.println(cl.toString());
     }
     try {
-        int ex = 1/0;
+        int example = 1/0;
 
-    }catch (Exception e){
-        cl.stackTraceToString(e);
+    }catch (Exception exception){
+        cl.stackTraceLog(exception);
         System.out.println(cl.toString());
     }
     }
