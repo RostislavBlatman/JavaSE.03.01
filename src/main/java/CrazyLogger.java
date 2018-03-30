@@ -7,6 +7,7 @@ public class CrazyLogger {
 
     private String name;
     private StringBuilder exceptionMessages = new StringBuilder();
+    private final String FORMAT = "dd.mm.YYYY : hh:mm - ";
 
     public CrazyLogger(String name){
         this.name = name;
@@ -15,7 +16,7 @@ public class CrazyLogger {
     private String getFormatCurrentDate(){
         Date dateNow = new Date();
         SimpleDateFormat formatForDateNow =
-                new SimpleDateFormat("dd.mm.YYYY : hh:mm - ");
+                new SimpleDateFormat(FORMAT);
         return formatForDateNow.format(dateNow);
     }
 
@@ -24,13 +25,17 @@ public class CrazyLogger {
         exceptionMessages.append(getFormatCurrentDate());
         for (StackTraceElement element : exception.getStackTrace()) {
             exceptionMessages.append(element.toString());
-            exceptionMessages.append("\n");
+            exceptionMessages.append(";\n");
         }
 
     }
 
-    public boolean findExceptionMessage (String message){
-        return toString().contains(message);
+    public String findExceptionMessage (String message){
+       if(toString().contains(message)) {
+           return getFormatCurrentDate() + message + ";";
+       }else {
+           return "message not found";
+       }
     }
 
     @Override
