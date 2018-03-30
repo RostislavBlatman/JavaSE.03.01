@@ -7,13 +7,13 @@ public class CrazyLogger {
 
     private String name;
     private StringBuilder exceptionMessages = new StringBuilder();
-    private final String FORMAT = "dd.mm.YYYY : hh:mm - ";
+    private final String FORMAT = "dd.MM.YYYY : hh-mm - ";
 
     public CrazyLogger(String name){
         this.name = name;
     }
 
-    private String getFormatCurrentDate(){
+    public String getFormatCurrentDate(){
         Date dateNow = new Date();
         SimpleDateFormat formatForDateNow =
                 new SimpleDateFormat(FORMAT);
@@ -31,15 +31,20 @@ public class CrazyLogger {
     }
 
     public String findExceptionMessage (String message){
-       if(toString().contains(message)) {
-           return getFormatCurrentDate() + message + ";";
-       }else {
-           return "message not found";
-       }
+        if(!message.equals("")) {
+            if (toString().contains(message)) {
+                return getFormatCurrentDate() + message + ";";
+            } else {
+                return "message not found";
+            }
+        }else {
+            return "empty message";
+        }
     }
 
     @Override
     public String toString() {
         return exceptionMessages.toString();
     }
+
 }
