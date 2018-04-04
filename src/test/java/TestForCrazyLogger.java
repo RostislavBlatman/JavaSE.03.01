@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestForCrazyLogger {
@@ -39,25 +38,17 @@ public class TestForCrazyLogger {
 
     @Test
     @DisplayName("Test for findExceptionMessage with empty message")
-    void testForFindExceptionMessageWithEmptyMessage(){
+    void testForFindExceptionMessageWithEmptyMessage() {
         crazyLogger.stackTraceLog(exception);
         assertTrue(crazyLogger.findExceptionMessage("").contains("empty message"));
     }
 
     @Test
     @DisplayName("Test for findExceptionMessage with wrong message")
-    void testForFindExceptionMessageWithWrongMessage(){
+    void testForFindExceptionMessageWithWrongMessage() {
         crazyLogger.stackTraceLog(exception);
         assertTrue(crazyLogger.findExceptionMessage("hgjfhkj").contains("message not found"));
     }
-
-    @Test
-    @DisplayName("Test for getFormatCurrentDate")
-    void testForGetFormatCurrentDate(){
-        assertTrue(crazyLogger.getFormatCurrentDate().contains("2018"));
-    }
-
-
 
 
 }

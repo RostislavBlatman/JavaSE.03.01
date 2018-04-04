@@ -8,12 +8,14 @@ public class CrazyLogger {
     private String name;
     private StringBuilder exceptionMessages = new StringBuilder();
     private final String FORMAT = "dd.MM.YYYY : hh-mm - ";
+    private final String MESSAGE_NOT_FOUND = "message not found";
+    private final String EMPTY_MESSAGE = "empty message";
 
-    public CrazyLogger(String name){
+    public CrazyLogger(String name) {
         this.name = name;
     }
 
-    public String getFormatCurrentDate(){
+    public String getFormatCurrentDate() {
         Date dateNow = new Date();
         SimpleDateFormat formatForDateNow =
                 new SimpleDateFormat(FORMAT);
@@ -30,15 +32,16 @@ public class CrazyLogger {
 
     }
 
-    public String findExceptionMessage (String message){
-        if(!message.equals("")) {
+    public String findExceptionMessage(String message) {
+        if (!message.equals("")) {
             if (toString().contains(message)) {
-                return getFormatCurrentDate() + message + ";";
+                return exceptionMessages.substring((exceptionMessages.indexOf(message) - 21),
+                        exceptionMessages.indexOf(message)) + message + ";";
             } else {
-                return "message not found";
+                return MESSAGE_NOT_FOUND;
             }
-        }else {
-            return "empty message";
+        } else {
+            return EMPTY_MESSAGE;
         }
     }
 
