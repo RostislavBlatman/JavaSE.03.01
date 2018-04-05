@@ -35,7 +35,7 @@ public class CrazyLogger {
     public String findExceptionMessage(String message) {
         if (!message.equals("")) {
             if (toString().contains(message)) {
-                return exceptionMessages.substring((exceptionMessages.indexOf(message) - 21),
+                return exceptionMessages.substring((exceptionMessages.indexOf(message) - FORMAT.length()),
                         exceptionMessages.indexOf(message)) + message + ";";
             } else {
                 return MESSAGE_NOT_FOUND;
